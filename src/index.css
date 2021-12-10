@@ -18,11 +18,17 @@
 
 .activeCard {
   background: red;
+  position: relative;
   
 }
 .dragCard {
   background: blue;
+  position: relative;
 }
-.goCard {
+.nonClick{
+  pointer-events: none;
+}
+
+.moveCard {
   position: relative;
 }

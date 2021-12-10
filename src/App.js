@@ -18,34 +18,12 @@ const pokemons =  [
   Squirtle,
   Charizard
 ]
-/*
-[
-  'blue',
-  'yellow',
-  'red',
-  'black',
-  'pink',
-  'green'
-]
 
-[
-  'Beedrill',
-  'Blastoise',
-  'Bulbasaur',
-  'Charmander',
-  'Squirtle',
-  'Charizard'
-]
-
-
-
-*/
 
 const App = () => {
   const [currentPokemonArrangement, setCurrentPokemonArrangement] = useState([])
-  const [squareBeingDragged, setSqareBeingDragged] = useState(null)
-  const [squareBeingReplaced, setSquareBeingReplaced] = useState(null)
   const [scoreDisplay, setScoreDisplay] = useState(0);
+  const [activeId, setActiveId] = useState(null);
 
 
 
@@ -102,6 +80,7 @@ const App = () => {
         rowOfThree.forEach(square => currentPokemonArrangement[square] = '')
         return true
       }
+    
     }
   }
 
@@ -123,55 +102,6 @@ const App = () => {
     }
   }
 
-  /*
-
-
-  const dragStart = (e) => {
-
-    setSqareBeingDragged(e.target)
-  }
-
-  const dragDrop = (e) => {
-
-    setSquareBeingReplaced(e.target)
-  }
-
-  const dragEnd = (e) => {
-
-
-    const squareBeingDragedId = parseInt(squareBeingDragged.getAttribute('data-id'))
-    const squareBeingReplacedId = parseInt(squareBeingReplaced.getAttribute('data-id'))
-
-    currentPokemonArrangement[squareBeingReplacedId] = squareBeingDragged.getAttribute('src')
-    currentPokemonArrangement[squareBeingDragedId] = squareBeingReplaced.getAttribute('src')
-
-
-    const validMoves = [
-      squareBeingDragedId - 1,
-      squareBeingDragedId - width,
-      squareBeingDragedId + 1,
-      squareBeingDragedId + width,
-    ]
-
-    const validMove = validMoves.includes(squareBeingReplacedId)
-    const isAColumnOfFour = checkForColumnOfFour();
-    const isARowOfFour = checkForRowOfFour();
-    const isAColumnOfThree = checkForColumnOfThree();
-    const isARowOfThree = checkForRowOfThree();
-
-
-    if (squareBeingReplacedId && validMove && (isAColumnOfFour || isARowOfFour || isAColumnOfThree || isARowOfThree)) {
-      setSqareBeingDragged(null)
-      setSquareBeingReplaced(null)
-    } else {
-      currentPokemonArrangement[squareBeingReplacedId] = squareBeingReplaced.getAttribute('src')
-      currentPokemonArrangement[squareBeingDragedId] = squareBeingDragged.getAttribute('src')
-      setCurrentPokemonArrangement([...currentPokemonArrangement])
-    }
-  }
-
-      */
-
   const createBoard = () =>{
     const randomColorArrangement = [];
     for (let i = 0; i < width * width; i++) {
@@ -187,62 +117,213 @@ const App = () => {
 
   }, []);
 
-
-
- /* let start = Date.now();
-  let timers = setInterval(() => {
-    let timePassed = Date.now() - start;
-      if ((parseInt(dragCard.target.id) - parseInt(startCard.target.id)) === -1) {
-        startCard.target.style.left = timePassed / 4.3 + 'px';
-        dragCard.target.style.right = timePassed / 4.3 + 'px';
-      }
-
-      if ((parseInt(dragCard.target.id) - parseInt(startCard.target.id)) === 1) {
-        startCard.target.style.right = timePassed / 4.3 + 'px';
-        dragCard.target.style.left = timePassed / 4.3 + 'px';
-      }
-
-      if ((parseInt(dragCard.target.id) - parseInt(startCard.target.id)) === width) {
-        startCard.target.style.bottom = timePassed / 4.3 + 'px';
-        dragCard.target.style.top = timePassed / 4.3 + 'px';
-      }
-
-      if ((parseInt(dragCard.target.id) - parseInt(startCard.target.id)) === -width) {
-        startCard.target.style.top = timePassed / 4.3 + 'px';
-        dragCard.target.style.bottom = timePassed / 4.3 + 'px';
-      }
-
-
-     
-      if (timePassed >= 300) clearInterval(timers);
-    }, 20); */
-
     
  
   const cardActive = (e) => {
-    e.target.classList.toggle('activeCard');
-    let dragCardArray = [
-      document.getElementById(parseInt(e.target.id) - 1),
-      document.getElementById(parseInt(e.target.id) + 1),
-      document.getElementById(parseInt(e.target.id) - width),
-      document.getElementById(parseInt(e.target.id) + width)
-    ]
-    if (e.target.classList.contains('activeCard')) {
-      dragCardArray.forEach(el => el?.classList.add('dragCard'))
-      dragCardArray.forEach(el => el?.addEventListener('mousedown', moveCards));
+    if (!e.target.classList.contains('dragCard')) {
+      e.target.classList.toggle('activeCard');
+      let dragCardArray = [
+        document.getElementById(parseInt(e.target.id) - 1),
+        document.getElementById(parseInt(e.target.id) + 1),
+        document.getElementById(parseInt(e.target.id) - width),
+        document.getElementById(parseInt(e.target.id) + width)
+      ]
+    
+      let leftSideActiveCard = [8, 16, 24, 32, 40, 48, 56];
+      let rightSideActiveCard = [7, 15, 23, 31, 39, 47, 55];
+      if (e.target.classList.contains('activeCard')) {
+        dragCardArray.forEach(el => el?.classList.add('dragCard'));
+        let newCardBlockArray = document.querySelectorAll('img');
+        newCardBlockArray.forEach(el => el.classList.add('nonClick'));
+        if (leftSideActiveCard.includes(parseInt(e.target.id))) {
+          document.getElementById(parseInt(e.target.id) - 1).classList.remove('dragCard');
+        }
+        if (rightSideActiveCard.includes(parseInt(e.target.id))) {
+          document.getElementById(parseInt(e.target.id) + 1).classList.remove('dragCard');
+        }
+        dragCardArray.forEach(el => el?.classList.contains('dragCard')? el.classList.remove('nonClick') : true);
+        e.target.classList.remove('nonClick');
+        let activeCardId = e.target.id;
+        setActiveId(activeCardId);
+      } else {
+        dragCardArray.forEach(el => el?.classList.remove('dragCard')); 
+        document.querySelectorAll('img').forEach(function (el){
+          el.classList.remove('nonClick');
+      })}
+    } 
+    else {
+      travelCard(e.target, activeId);
      
-     
-    } else {
-      dragCardArray.forEach(el => el?.classList.remove('dragCard'))
-      dragCardArray.forEach(el => el?.removeEventListener('mousedown', moveCards));
-    }   
-   }
-
-   const moveCards = () => {
-    console.log('ddd')
-   }
-
+    } 
+  }
    
+const travelCard = (e, startCardId) => {
+
+  let startCard = document.getElementById(startCardId);
+  let dragCard = e;
+
+
+
+  let start = Date.now();
+  let timers = setInterval( () => {
+    let timePassed = Date.now() - start;
+      if ((parseInt(dragCard.id) - parseInt(startCard.id)) === 1) {
+          startCard.style.left = timePassed / 4.3 + 'px';
+          dragCard.style.right = timePassed / 4.3 + 'px';
+      }
+
+        if ((parseInt(dragCard.id) - parseInt(startCard.id)) === -1) { 
+          startCard.style.right = timePassed / 4.3 + 'px';
+          dragCard.style.left = timePassed / 4.3 + 'px';
+        
+        }
+
+        if ((parseInt(dragCard.id) - parseInt(startCard.id)) === -width) {
+          startCard.style.bottom = timePassed / 4.3 + 'px';
+          dragCard.style.top = timePassed / 4.3 + 'px';
+        }
+
+        if ((parseInt(dragCard.id) - parseInt(startCard.id)) === width) {
+          startCard.style.top = timePassed / 4.3 + 'px';
+          dragCard.style.bottom = timePassed / 4.3 + 'px';
+        }
+      
+        if (timePassed >= 300){
+          clearInterval(timers);
+     
+         
+        let oldStartPosition = currentPokemonArrangement[parseInt(startCard.id)]
+          currentPokemonArrangement[parseInt(startCard.id)] = currentPokemonArrangement[parseInt(dragCard.id)];
+          currentPokemonArrangement[parseInt(dragCard.id)] = oldStartPosition;
+          setCurrentPokemonArrangement([...currentPokemonArrangement]); 
+        
+     
+          if (CheckDrag()) {
+            console.log('vse Ok')
+            let dragCardArrayUse = document.querySelectorAll('.dragCard');
+            dragCardArrayUse.forEach(el => el.classList.remove('dragCard'));
+            document.getElementById(parseInt(activeId)).classList.remove('activeCard');
+            document.querySelectorAll('img').forEach(function (el){
+              el?.classList.remove('nonClick');
+              el.removeAttribute('style');
+            })
+            console.log('kek')
+          } else {
+            console.log('vse ne ok');
+            dragCardsBack(e, startCardId);
+
+
+          }
+     
+       
+         
+  
+        } 
+      }, 20); 
+       
+  
+       
+      }
+    
+  const CheckDrag = () => {
+    for (let i = 0; i <= 39; i++) {
+      const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
+      const decidedColor = currentPokemonArrangement[i];
+      const isBlank = currentPokemonArrangement[i] === '';
+      if (columnOfFour.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) { 
+        return true
+      }
+      
+    }
+    for (let i = 0; i < 39; i++) {
+      const rowOfFour = [i, i + 1, i + 2, i + 3];
+      const decidedColor = currentPokemonArrangement[i];
+      const notValid = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55, 62, 63, 64];
+      const isBlank = currentPokemonArrangement[i] === '';
+      if (notValid.includes(i)) continue
+      if (rowOfFour.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
+       return true
+      }
+    }
+      for (let i = 0; i <= 47; i++) {
+        const columnOfThree = [i, i + width, i + width * 2];
+        const decidedColor = currentPokemonArrangement[i];
+        const isBlank = currentPokemonArrangement[i] === '';
+        if (columnOfThree.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
+          return true
+      } 
+    }
+    for (let i = 0; i < 64; i++) {
+      const rowOfThree = [i, i + 1, i + 2];
+      const decidedColor = currentPokemonArrangement[i];
+      const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55, 63, 64];
+      const isBlank = currentPokemonArrangement[i] === '';
+      if (notValid.includes(i)) continue
+      if (rowOfThree.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
+       return true
+      } 
+    }
+    return false   
+  }
+
+  const dragCardsBack = (e, startCardId) => {
+
+    let startCard = document.getElementById(startCardId);
+    let dragCard = e;
+    
+    startCard.classList.add('moveCard');
+    dragCard.classList.add('moveCard');
+   
+  console.log(currentPokemonArrangement)
+ 
+    let start = Date.now();
+    let timers = setInterval( () => {
+      let timePassed = Date.now() - start;
+        if ((parseInt(dragCard.id) - parseInt(startCard.id)) === 1) {
+            startCard.style.left = timePassed / 4.3 + 'px';
+            dragCard.style.right = timePassed / 4.3 + 'px';
+        }
+  
+          if ((parseInt(dragCard.id) - parseInt(startCard.id)) === -1) { 
+            startCard.style.right = timePassed / 4.3 + 'px';
+            dragCard.style.left = timePassed / 4.3 + 'px';
+          
+          }
+  
+          if ((parseInt(dragCard.id) - parseInt(startCard.id)) === -width) {
+            startCard.style.bottom = timePassed / 4.3 + 'px';
+            dragCard.style.top = timePassed / 4.3 + 'px';
+          }
+  
+          if ((parseInt(dragCard.id) - parseInt(startCard.id)) === width) {
+            startCard.style.top = timePassed / 4.3 + 'px';
+            dragCard.style.bottom = timePassed / 4.3 + 'px';
+          }
+        
+          if (timePassed >= 300){
+            clearInterval(timers);
+       
+           console.log(currentPokemonArrangement)
+           let oldStartPosition = currentPokemonArrangement[parseInt(startCard.id)]
+           currentPokemonArrangement[parseInt(startCard.id)] = currentPokemonArrangement[parseInt(dragCard.id)];
+           currentPokemonArrangement[parseInt(dragCard.id)] = oldStartPosition;
+           setCurrentPokemonArrangement([...currentPokemonArrangement]); 
+           let dragCardArrayUse = document.querySelectorAll('.dragCard');
+           dragCardArrayUse.forEach(el => el.classList.remove('dragCard'));
+           document.getElementById(parseInt(activeId)).classList.remove('activeCard');
+           document.querySelectorAll('img').forEach(function (el){
+             el?.classList.remove('nonClick');
+             el.removeAttribute('style');
+           })
+           console.log('kek')
+
+          } 
+        }, 20); 
+         
+         
+        }
+
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -252,6 +333,8 @@ const App = () => {
       checkForRowOfThree()
       moveIntoSquareBelow()
       setCurrentPokemonArrangement([...currentPokemonArrangement])
+
+      
     }, 100)
     return () => clearInterval(timer)
 
@@ -269,14 +352,6 @@ const App = () => {
             alt={candyColor}
             data-id={index}
             onClick={cardActive}
-            /*draggable={true}
-            
-            onDragStart={dragStart}
-            onDragOver={(e) => e.preventDefault()}
-            onDragEnter={(e) => e.preventDefault()}
-            onDragLeave={(e) => e.preventDefault()}
-            onDrop={dragDrop}
-            onDragEnd={dragEnd}*/
           />
         ))}
       </div>
