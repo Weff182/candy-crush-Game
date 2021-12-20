@@ -130,6 +130,7 @@ const GameLogic = () => {
       let leftSideActiveCard = [8, 16, 24, 32, 40, 48, 56];
       let rightSideActiveCard = [7, 15, 23, 31, 39, 47, 55];
       if (e.target.classList.contains('activeCard')) {
+        
         dragCardArray.forEach(el => el?.classList.add('dragCard'));
         let newCardBlockArray = document.querySelectorAll('img');
         newCardBlockArray.forEach(el => el.classList.add('nonClick'));
@@ -142,8 +143,10 @@ const GameLogic = () => {
         dragCardArray.forEach(el => el?.classList.contains('dragCard')? el.classList.remove('nonClick') : true);
         e.target.classList.remove('nonClick');
         let activeCardId = e.target.id;
+        activeTravelField(e, dragCardArray);
         setActiveId(activeCardId);
       } else {
+        stopActiveTravelField(e, dragCardArray);
         dragCardArray.forEach(el => el?.classList.remove('dragCard')); 
         document.querySelectorAll('img').forEach(function (el){
           el.classList.remove('nonClick');
@@ -151,10 +154,29 @@ const GameLogic = () => {
     } 
     else {
       travelCard(e.target, activeId);
-     
+      clearActiveTravelField();
     } 
   }
-   
+const activeTravelField = (activeCard, dragCardArr) => {
+  const newArr =  dragCardArr.filter(el => el?.classList.contains('dragCard'));
+  console.log(newArr)
+  const arrCardBox = document.querySelectorAll('.gameCardBox');
+  arrCardBox[parseInt(activeCard.target.id)].classList.add('borderBox');
+  newArr.forEach(el => arrCardBox[parseInt(el.id)].classList.add('borderBox'));
+}
+
+const stopActiveTravelField = (activeCard, dragCardArr) => {
+  const newArr =  dragCardArr.filter(el => el?.classList.contains('dragCard'));
+  console.log(newArr)
+  const arrCardBox = document.querySelectorAll('.gameCardBox');
+  arrCardBox[parseInt(activeCard.target.id)].classList.remove('borderBox');
+  newArr.forEach(el => arrCardBox[parseInt(el.id)].classList.remove('borderBox'));
+}
+
+const clearActiveTravelField = () => {
+  const arrCardBox = document.querySelectorAll('.gameCardBox');
+  arrCardBox.forEach(el => el.classList?.remove('borderBox'));
+}
 const travelCard = (e, startCardId) => {
   let startCard = document.getElementById(startCardId);
   let dragCard = e;
