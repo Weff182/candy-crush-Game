@@ -5,8 +5,13 @@ import Bulbasaur from '../images/pokemons/Bulbasaur.png'
 import Charmander from '../images/pokemons/Charmander.png'
 import Squirtle from '../images/pokemons/Squirtle.png'
 import Charizard from '../images/pokemons/Charizard.png'
+import Empty from '../images/pokemons/Empty3.jpg'
 import ScoreBoard from './ScoreBoard.js'
 import TimeBoard from './TimerBoard'
+import * as React from 'react'
+import Button from '@mui/material/Button' 
+
+
 
 const width = 8;
 const pokemons =  [
@@ -17,6 +22,7 @@ const pokemons =  [
   Squirtle,
   Charizard
 ]
+const emptyPic = '';
  
 const GameLogic = () => {
       const [currentPokemonArrangement, setCurrentPokemonArrangement] = useState([])
@@ -29,10 +35,10 @@ const GameLogic = () => {
     for (let i = 0; i <= 39; i++) {
       const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
       const decidedColor = currentPokemonArrangement[i];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (columnOfFour.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
         setScoreDisplay((score) => score + 4)
-        columnOfFour.forEach(square => currentPokemonArrangement[square] = '')
+        columnOfFour.forEach(square => currentPokemonArrangement[square] = emptyPic)
         return true
       }
     }
@@ -43,11 +49,11 @@ const GameLogic = () => {
       const rowOfFour = [i, i + 1, i + 2, i + 3];
       const decidedColor = currentPokemonArrangement[i];
       const notValid = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55, 62, 63, 64];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (notValid.includes(i)) continue
       if (rowOfFour.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
         setScoreDisplay((score) => score + 4)
-        rowOfFour.forEach(square => currentPokemonArrangement[square] = '')
+        rowOfFour.forEach(square => currentPokemonArrangement[square] = emptyPic)
         return true
       }
     }
@@ -57,10 +63,10 @@ const GameLogic = () => {
     for (let i = 0; i <= 47; i++) {
       const columnOfThree = [i, i + width, i + width * 2];
       const decidedColor = currentPokemonArrangement[i];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (columnOfThree.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
         setScoreDisplay((score) => score + 3)
-        columnOfThree.forEach(square => currentPokemonArrangement[square] = '')
+        columnOfThree.forEach(square => currentPokemonArrangement[square] = emptyPic)
         return true
       }
     }
@@ -71,11 +77,11 @@ const GameLogic = () => {
       const rowOfThree = [i, i + 1, i + 2];
       const decidedColor = currentPokemonArrangement[i];
       const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55, 63, 64];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (notValid.includes(i)) continue
       if (rowOfThree.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
         setScoreDisplay((score) => score + 3)
-        rowOfThree.forEach(square => currentPokemonArrangement[square] = '')
+        rowOfThree.forEach(square => currentPokemonArrangement[square] = emptyPic)
         return true
       }
     
@@ -87,15 +93,15 @@ const GameLogic = () => {
       const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
       const findNumber = firstRow.includes(i);
 
-      if (findNumber && currentPokemonArrangement[i] === '') {
+      if (findNumber && currentPokemonArrangement[i] === emptyPic) {
         let radnomNumber = Math.floor(Math.random() * pokemons.length);
         let randomColor = pokemons[radnomNumber];
         currentPokemonArrangement[i] = randomColor;
       }
 
-      if (currentPokemonArrangement[i + width] === '') {
+      if (currentPokemonArrangement[i + width] === emptyPic) {
         currentPokemonArrangement[i + width] = currentPokemonArrangement[i];
-        currentPokemonArrangement[i] = '';
+        currentPokemonArrangement[i] = emptyPic;
       }
     }
   }
@@ -238,7 +244,7 @@ const travelCard = (e, startCardId) => {
     for (let i = 0; i <= 39; i++) {
       const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
       const decidedColor = currentPokemonArrangement[i];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (columnOfFour.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) { 
         return true
       }
@@ -248,7 +254,7 @@ const travelCard = (e, startCardId) => {
       const rowOfFour = [i, i + 1, i + 2, i + 3];
       const decidedColor = currentPokemonArrangement[i];
       const notValid = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55, 62, 63, 64];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (notValid.includes(i)) continue
       if (rowOfFour.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
        return true
@@ -257,7 +263,7 @@ const travelCard = (e, startCardId) => {
       for (let i = 0; i <= 47; i++) {
         const columnOfThree = [i, i + width, i + width * 2];
         const decidedColor = currentPokemonArrangement[i];
-        const isBlank = currentPokemonArrangement[i] === '';
+        const isBlank = currentPokemonArrangement[i] === emptyPic;
         if (columnOfThree.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
           return true
       } 
@@ -266,7 +272,7 @@ const travelCard = (e, startCardId) => {
       const rowOfThree = [i, i + 1, i + 2];
       const decidedColor = currentPokemonArrangement[i];
       const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55, 63, 64];
-      const isBlank = currentPokemonArrangement[i] === '';
+      const isBlank = currentPokemonArrangement[i] === emptyPic;
       if (notValid.includes(i)) continue
       if (rowOfThree.every(square => currentPokemonArrangement[square] === decidedColor && !isBlank)) {
        return true
@@ -375,13 +381,17 @@ const travelCard = (e, startCardId) => {
 
   return (
     <div>
+        <div className='logoBlock'> 
+          <div className='pokemonLogo'></div>
+        </div>
     
-        <button onClick={timerGame}>Start Game</button>
-     
+        <Button variant="outlined" onClick={timerGame}>Start Game</Button>
    
         <TimeBoard />
         <ScoreBoard score={scoreDisplay} />
+        <div className="gameBox">
     <div className="gameLogic">
+
      {currentPokemonArrangement.map((candyColor, index) => (
        <div className='gameCardBox'>
           <img 
@@ -395,6 +405,8 @@ const travelCard = (e, startCardId) => {
           </div>
         ))}
     </div>
+    </div>
+
 
     </div>
   )

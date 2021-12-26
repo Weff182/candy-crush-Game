@@ -1,8 +1,12 @@
-.app {
-  background-color: rgb(82, 75, 75);
-  background-size: 100%;
-}
 
+#root {
+  background: url(./images/fon.jpeg) no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  }
+
+ 
 
 /* Timer Board Block start*/
 
@@ -80,27 +84,44 @@ margin-top: 22%;
  color: rgba(172, 194, 201, 0.707);
 }
 
-
-.gameLogic {
+.gameBox {
+  background-color: rgba(94, 116, 101, 0.6);
+  width: 600px;
+  height: 600px;
   position: inherit;
-  width: 577px;
   height: auto;
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
+  padding: 20px 0 20px 0;
+  border-radius: 30px;
 }
+
+.gameLogic {
+  position: inherit;
+  width: 560px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
 .gameCardBox {
+  opacity: none;
   width: 70px;
   height: 70px;
-  border: solid 0.1px rgb(93, 98, 100);
+  border: solid 0.1px rgb(128, 132, 133);
   border-radius: 20%;
+  background-color: rgba(233, 235, 235, 0.3);
  }
 
 .gameLogic .gameCardBox img {
   width: 69px;
   height: 69px;
   border-radius: 20%;
+
 }
 
 
@@ -122,5 +143,19 @@ margin-top: 22%;
 }
 
 .borderBox {
-  border: solid 0.1px rgb(249, 252, 253);
+  background-color: rgba(255, 255, 255, 0.6);
 }
+
+.logoBlock {
+  width: 100%;
+  height: 100px;
+
+}
+.pokemonLogo {
+   background: url('/src/images/Pokemon.png') no-repeat center;
+   background-size: contain;
+   width: 500px;
+   height: 100px;
+   margin-left: auto;
+   margin-right: auto;
+ }
