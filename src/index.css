@@ -15,15 +15,31 @@
   margin-left: 77%;
   margin-top: 4%;
 }
+.pikaRun{
+  width: 150px;
+}
+.pikachuPic{
+  position: relative;
+  width: 50px;
+}
+
+
+
+
 .timerBox{
   width: 150px;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgba(94, 116, 101, 0.6);
+  border-radius: 25px;
+  padding-bottom: 20px;
+
 }
 .timeBox {
   width: 85px;
   margin-left: auto;
   margin-right: auto;
+
 }
 .timeName {
   width: 85px;
@@ -47,10 +63,36 @@
   margin-right: auto;
  font-size: 40px;
  color: rgba(172, 194, 201, 0.707);
+} /*
+.chyp {
+  width: 150px;
+  display: flex;
+}
+.chyp1,
+.chyp2,
+.chyp3,
+.chyp4,
+.chyp5 {
+  width: 30px;
+  height: 40px;
+  background-color: rgba(94, 116, 101, 0.6);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.chyp2{
+  height: 50px;
+}
+.chyp3{
+  height: 40px;
+}
+.chyp4{
+  height: 60px;
+}
+.chyp5{
+  height: 50px;
 }
 
 /* Timer Board Block end */
-
 /* Score Board Block start*/
 .score-board {
 position: absolute;
@@ -112,9 +154,9 @@ margin-top: 22%;
   opacity: none;
   width: 70px;
   height: 70px;
-  border: solid 0.1px rgb(128, 132, 133);
+  border: solid 0.1px rgb(93, 118, 94);
   border-radius: 20%;
-  background-color: rgba(233, 235, 235, 0.3);
+  background-color: rgb(159, 179, 171);
  }
 
 .gameLogic .gameCardBox img {
@@ -143,7 +185,7 @@ margin-top: 22%;
 }
 
 .borderBox {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(225, 242, 233, 0.722);
 }
 
 .logoBlock {
