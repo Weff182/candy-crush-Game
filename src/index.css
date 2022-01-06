@@ -21,6 +21,59 @@
 .pikachuPic{
   position: relative;
   width: 50px;
+  animation: pikarun 5s linear infinite;
+}
+
+@keyframes pikarun {
+
+ 0% {
+    top: 0px;
+    left: 0px;
+    transform: rotate(0deg);
+  }
+  17% {
+    top: 0px;
+    transform: rotate(0deg);
+  }
+  18% {
+    top: 2px;
+  }
+  28% {
+    transform: rotate(90deg);
+  }
+  25% {
+    left: 140px;
+    top: 35px;
+  }
+
+  35% {
+    left: 140px;
+    transform: rotate(90deg);
+  }
+  50% {
+    top: 170px;
+    left: 110px;
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(180deg);
+    top: 170px;
+  }
+  75% {
+    top: 140px;
+    left: -40px;
+    transform: rotate(270deg);
+  }
+  85% {
+    transform: rotate(270deg);
+    left: -40px;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    transform: rotate(360deg);
+  } 
+
 }
 
 
@@ -31,7 +84,7 @@
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(94, 116, 101, 0.6);
-  border-radius: 25px;
+  border-radius: 40px;
   padding-bottom: 20px;
 
 }
@@ -63,34 +116,8 @@
   margin-right: auto;
  font-size: 40px;
  color: rgba(172, 194, 201, 0.707);
-} /*
-.chyp {
-  width: 150px;
-  display: flex;
-}
-.chyp1,
-.chyp2,
-.chyp3,
-.chyp4,
-.chyp5 {
-  width: 30px;
-  height: 40px;
-  background-color: rgba(94, 116, 101, 0.6);
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-.chyp2{
-  height: 50px;
-}
-.chyp3{
-  height: 40px;
-}
-.chyp4{
-  height: 60px;
-}
-.chyp5{
-  height: 50px;
-}
+} 
+
 
 /* Timer Board Block end */
 /* Score Board Block start*/

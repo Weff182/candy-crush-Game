@@ -367,7 +367,9 @@ const travelCard = (e, startCardId) => {
 
    const pikaRun = () => {
       const pikachu = document.querySelector('.pikachuPic');
-      let start = Date.now();
+   }
+
+     /* let start = Date.now();
       let x = 0;
       let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
       let timers = setInterval( () => {
@@ -377,7 +379,6 @@ const travelCard = (e, startCardId) => {
               }
               
               if (timePassed > 1998 && timePassed < 2015) {
-                
                 let startw = Date.now()
                 let timersw = setInterval(() => {
                   let timePassedw = Date.now() - startw;
@@ -394,9 +395,7 @@ const travelCard = (e, startCardId) => {
                
                 }, 100) 
               }
-                
-  
-              
+                             
                 if (timePassed > 2200 && timePassed < 2230) {
 
                   let startq = Date.now()
@@ -411,13 +410,7 @@ const travelCard = (e, startCardId) => {
                     }
                   })
                 }
-              
-
-
-            
-           
-            
-            
+                             
             /*  if (parseInt(pikachu.style.left.slice(0,3)) > 115){
                 pikachu.classList.add('rotatePika');
               }
@@ -428,10 +421,11 @@ const travelCard = (e, startCardId) => {
             if (timePassed >= 6000) {
               clearInterval(timers);
               alert('vi petax')
-            } */
-      
+            } 
           }, 20); 
    }
+   */
+      
    
 
 
