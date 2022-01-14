@@ -1,5 +1,4 @@
 import './index.css'
-import TimeBoard from './components/TimerBoard';
 import GameLogic from './components/GameLogic';
 
 

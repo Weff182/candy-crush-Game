@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Beedrill from '../images/pokemons/Beedrill.png'
 import Blastoise from '../images/pokemons/Blastoise.png'
 import Bulbasaur from '../images/pokemons/Bulbasaur.png'
@@ -10,8 +10,8 @@ import ScoreBoard from './ScoreBoard.js'
 import TimeBoard from './TimerBoard'
 import * as React from 'react'
 import Button from '@mui/material/Button' 
-import AudioElement from './AudioElement'
-  
+
+
 
 
 const width = 8;
@@ -32,7 +32,7 @@ const GameLogic = () => {
 
 
 
-  const checkForColumnOfFour = () =>{
+  const checkForColumnOfFour = useCallback(() =>{
     for (let i = 0; i <= 39; i++) {
       const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
       const decidedColor = currentPokemonArrangement[i];
@@ -43,9 +43,9 @@ const GameLogic = () => {
         return true
       }
     }
-  }
+  }, [currentPokemonArrangement]);
 
-  const checkForRowOfFour = () =>{
+  const checkForRowOfFour = useCallback(() =>{
     for (let i = 0; i < 39; i++) {
       const rowOfFour = [i, i + 1, i + 2, i + 3];
       const decidedColor = currentPokemonArrangement[i];
@@ -58,9 +58,9 @@ const GameLogic = () => {
         return true
       }
     }
-  }
+  }, [currentPokemonArrangement]);
 
-  const checkForColumnOfThree = () =>{
+  const checkForColumnOfThree = useCallback(() =>{
     for (let i = 0; i <= 47; i++) {
       const columnOfThree = [i, i + width, i + width * 2];
       const decidedColor = currentPokemonArrangement[i];
@@ -71,9 +71,9 @@ const GameLogic = () => {
         return true
       }
     }
-  }
+  }, [currentPokemonArrangement]);
 
-  const checkForRowOfThree = () =>{
+  const checkForRowOfThree = useCallback(() =>{
     for (let i = 0; i < 64; i++) {
       const rowOfThree = [i, i + 1, i + 2];
       const decidedColor = currentPokemonArrangement[i];
@@ -87,9 +87,9 @@ const GameLogic = () => {
       }
     
     }
-  }
+  }, [currentPokemonArrangement]);
 
-  const moveIntoSquareBelow = () => {
+  const moveIntoSquareBelow = useCallback(() => {
     for (let i = 0; i <= 55; i++){
       const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
       const findNumber = firstRow.includes(i);
@@ -105,7 +105,7 @@ const GameLogic = () => {
         currentPokemonArrangement[i] = emptyPic;
       }
     }
-  }
+  }, [currentPokemonArrangement]);
 
   const createBoard = () =>{
     const randomColorArrangement = [];
