@@ -10,7 +10,8 @@ import ScoreBoard from './ScoreBoard.js'
 import TimeBoard from './TimerBoard'
 import * as React from 'react'
 import Button from '@mui/material/Button' 
-
+import AudioElement from './AudioElement'
+  
 
 
 const width = 8;
@@ -339,7 +340,7 @@ const travelCard = (e, startCardId) => {
 
 
   const timerGame = () => {
-      pikaRun()
+      document.querySelector('.pikachuPic').classList.add('pikachuAnimation');
       let sec = 60;
       let min = 1;
       let timer = setInterval(() => {
@@ -365,66 +366,6 @@ const travelCard = (e, startCardId) => {
    }
  
 
-   const pikaRun = () => {
-      const pikachu = document.querySelector('.pikachuPic');
-   }
-
-     /* let start = Date.now();
-      let x = 0;
-      let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      let timers = setInterval( () => {
-      let timePassed = Date.now() - start;
-              if (timePassed < 2850) {
-                pikachu.style.left = timePassed / 20 + 'px';
-              }
-              
-              if (timePassed > 1998 && timePassed < 2015) {
-                let startw = Date.now()
-                let timersw = setInterval(() => {
-                  let timePassedw = Date.now() - startw;
-                  if (timePassedw < 2900) {
-                    pikachu.style.transform = 'rotate(' + x + 'deg)';
-                    console.log(parseInt(pikachu.style.transform.split('').filter(el => arr.includes(parseInt(el))).join('')));
-                    if (parseInt(pikachu.style.transform.split('').filter(el => arr.includes(parseInt(el))).join('')) > 80){
-                      clearInterval(timersw);
-                    } else {
-                      x = x + 15;
-                    }
-                    
-                  }
-               
-                }, 100) 
-              }
-                             
-                if (timePassed > 2200 && timePassed < 2230) {
-
-                  let startq = Date.now()
-                  let timersq = setInterval(() => {
-                    let timePassedq = Date.now() - startq;
-                   
-                    if (timePassedq < 2700) {
-                      pikachu.style.top = timePassedq / 20 + 'px';
-                    }
-                    else {
-                      clearInterval(timersq);
-                    }
-                  })
-                }
-                             
-            /*  if (parseInt(pikachu.style.left.slice(0,3)) > 115){
-                pikachu.classList.add('rotatePika');
-              }
-              if (parseInt(pikachu.style.left.slice(0,3)) > 115){
-                pikachu.style.top = timePassed / 20 + 'px';
-              }
-              console.log(parseInt(pikachu.style.left.slice(0,3)))
-            if (timePassed >= 6000) {
-              clearInterval(timers);
-              alert('vi petax')
-            } 
-          }, 20); 
-   }
-   */
       
    
 
@@ -451,9 +392,8 @@ const travelCard = (e, startCardId) => {
         <div className='logoBlock'> 
           <div className='pokemonLogo'></div>
         </div>
-    
         <Button variant="outlined" onClick={timerGame}>Start Game</Button>
-   
+       
         <TimeBoard />
         <ScoreBoard score={scoreDisplay} />
         <div className="gameBox">
