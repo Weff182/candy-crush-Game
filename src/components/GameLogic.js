@@ -10,6 +10,7 @@ import ScoreBoard from './ScoreBoard.js'
 import TimeBoard from './TimerBoard'
 import * as React from 'react'
 import Button from '@mui/material/Button' 
+import AudioElement from './AudioElement'
 
 
 
@@ -389,30 +390,36 @@ const travelCard = (e, startCardId) => {
 
   return (
     <div>
-        <div className='logoBlock'> 
-          <div className='pokemonLogo'></div>
-        </div>
-        <Button variant="outlined" onClick={timerGame}>Start Game</Button>
-       
-        <TimeBoard />
-        <ScoreBoard score={scoreDisplay} />
+      <div className='logoBlock'> 
+        <div className='pokemonLogo'></div>
+      </div>
+      <Button variant="outlined" onClick={timerGame}>Start Game</Button>
+      <div className="mainGameField">
         <div className="gameBox">
-    <div className="gameLogic">
-
-     {currentPokemonArrangement.map((candyColor, index) => (
-       <div className='gameCardBox'>
-          <img 
-            id={index}
-            key={index} 
-            src={candyColor}
-            alt={candyColor}
-            data-id={index}
-            onClick={cardActive}
-          />
+          <div className="gameBorder">  
+            <div className="gameLogic">
+              {currentPokemonArrangement.map((candyColor, index) => (
+                <div className='gameCardBox'>
+                  <img 
+                    id={index}
+                    key={index} 
+                    src={candyColor}
+                    alt={candyColor}
+                    data-id={index}
+                    onClick={cardActive}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-    </div>
-    </div>
+        </div>
+        <div className='leftsideInfoBar'>
+          <TimeBoard />
+          <AudioElement />
+          <ScoreBoard score={scoreDisplay} />
+        </div>
+      </div>
+      
 
 
     </div>

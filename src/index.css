@@ -6,14 +6,141 @@
   width: 100%;
   }
 
+/*MAIN GAME FIELD START */
+.mainGameField {
+  width: 100%;
+  height: 640px;
+  display: flex;
+}
+/* RIGHT SIDE GAME */
+  .gameBox{
+    margin-left: auto;
+    margin-right: auto; 
+    width: 600px;
+ 
+  }
+
+  .gameBorder {
+    background-color: rgba(94, 116, 101, 0.6);
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto; 
+    padding: 20px 0 20px 0;
+    border-radius: 30px;
+  }
+  
+  .gameLogic {
+    position: inherit;
+    width: 560px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  
+  .gameCardBox {
+    opacity: none;
+    width: 70px;
+    height: 70px;
+    border: solid 0.1px rgb(93, 118, 94);
+    border-radius: 20%;
+    background-color: rgb(159, 179, 171);
+   }
+  
+  .gameLogic .gameCardBox img {
+    width: 69px;
+    height: 69px;
+    border-radius: 20%;
+  }
+
+  .activeCard {
+    position: relative;  
+  }
+
+  .dragCard {
+    position: relative;
+  }
+
+  .nonClick{
+    pointer-events: none;
+  }
+
+  .moveCard {
+    position: relative;
+  }
+
+  .borderBox {
+    background-color: rgba(225, 242, 233, 0.722);
+  }
+/* LEFTS SIDE INFO BAR START */
+
+.leftsideInfoBar{
+ position: absolute;
+ margin-left: auto;
+ margin-left: 75%;
+}
+
+/* pikachu music start */
+.pikachuMusicBox {
+  width: 150px;
+  height: 137px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(94, 116, 101, 0.6);
+  border-radius: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+}
+.pikachuMusicBoxActive{
+  background-color: rgba(87, 154, 108, 0.7);
+  border: solid 1px whitesmoke;
+  
+}
+.pikachuBox {
+  cursor: pointer;
+} 
+
+.pikachuMusicImage {
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+
+}
+.inputBox {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.audio-item__volume  {
+  width: 100px;
+  cursor: pointer;
+	appearance: none;
+	opacity: 0.6;
+}
+.audio-item__volume::-webkit-slider-runnable-track {
+	border-radius: 10px/100%;
+	height: 2px;
+	background-color: #fff;
+}
+.audio-item__volume::-webkit-slider-thumb {
+	background: #fff;
+	border-radius: 100%;
+	width: 12px;
+	height: 12px;
+	margin-top: -5px;
+	-webkit-appearance: none;
+}
+
+/* pikachu music finish */
  
 
 /* Timer Board Block start*/
 
 .timer-board{
-  position: absolute;
-  margin-left: 77%;
-  margin-top: 4%;
+width: 150px;
+margin-bottom: 60px;
 }
 .pikaRun{
   width: 150px;
@@ -74,11 +201,6 @@
 
 }
 
-.audiobtn {
-  height: 100px;
-  width: 100px;
-}
-
 
 .timerBox{
   width: 150px;
@@ -123,12 +245,13 @@
 /* Timer Board Block end */
 /* Score Board Block start*/
 .score-board {
-position: absolute;
-width: 150px;
-margin-left: auto;
-margin-right: auto;
-margin-left: 77%;
-margin-top: 22%;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(94, 116, 101, 0.6);
+  border-radius: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 36px;
 }
 .score-text {
   width: 85px;
@@ -154,67 +277,6 @@ margin-top: 22%;
  color: rgba(172, 194, 201, 0.707);
 }
 
-.gameBox {
-  background-color: rgba(94, 116, 101, 0.6);
-  width: 600px;
-  height: 600px;
-  position: inherit;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto; 
-  padding: 20px 0 20px 0;
-  border-radius: 30px;
-}
-
-.gameLogic {
-  position: inherit;
-  width: 560px;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto; 
-}
-
-.gameCardBox {
-  opacity: none;
-  width: 70px;
-  height: 70px;
-  border: solid 0.1px rgb(93, 118, 94);
-  border-radius: 20%;
-  background-color: rgb(159, 179, 171);
- }
-
-.gameLogic .gameCardBox img {
-  width: 69px;
-  height: 69px;
-  border-radius: 20%;
-
-}
-
-
-.activeCard {
- 
-  position: relative;
-
-  
-}
-.dragCard {
-  position: relative;
-}
-.nonClick{
-  pointer-events: none;
-}
-
-.moveCard {
-  position: relative;
-}
-
-.borderBox {
-  background-color: rgba(225, 242, 233, 0.722);
-}
 
 .logoBlock {
   width: 100%;
