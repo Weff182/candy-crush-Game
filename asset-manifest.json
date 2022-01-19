@@ -1,27 +1,31 @@
 {
   "files": {
-    "main.css": "/candy-crush-Game/static/css/main.b2beef7c.chunk.css",
-    "main.js": "/candy-crush-Game/static/js/main.08eb810a.chunk.js",
-    "main.js.map": "/candy-crush-Game/static/js/main.08eb810a.chunk.js.map",
+    "main.css": "/candy-crush-Game/static/css/main.b777c438.chunk.css",
+    "main.js": "/candy-crush-Game/static/js/main.bfca27f6.chunk.js",
+    "main.js.map": "/candy-crush-Game/static/js/main.bfca27f6.chunk.js.map",
     "runtime-main.js": "/candy-crush-Game/static/js/runtime-main.914ddc39.js",
     "runtime-main.js.map": "/candy-crush-Game/static/js/runtime-main.914ddc39.js.map",
-    "static/js/2.87c597e8.chunk.js": "/candy-crush-Game/static/js/2.87c597e8.chunk.js",
-    "static/js/2.87c597e8.chunk.js.map": "/candy-crush-Game/static/js/2.87c597e8.chunk.js.map",
+    "static/js/2.dca62f3e.chunk.js": "/candy-crush-Game/static/js/2.dca62f3e.chunk.js",
+    "static/js/2.dca62f3e.chunk.js.map": "/candy-crush-Game/static/js/2.dca62f3e.chunk.js.map",
     "index.html": "/candy-crush-Game/index.html",
-    "static/css/main.b2beef7c.chunk.css.map": "/candy-crush-Game/static/css/main.b2beef7c.chunk.css.map",
-    "static/js/2.87c597e8.chunk.js.LICENSE.txt": "/candy-crush-Game/static/js/2.87c597e8.chunk.js.LICENSE.txt",
+    "static/css/main.b777c438.chunk.css.map": "/candy-crush-Game/static/css/main.b777c438.chunk.css.map",
+    "static/js/2.dca62f3e.chunk.js.LICENSE.txt": "/candy-crush-Game/static/js/2.dca62f3e.chunk.js.LICENSE.txt",
     "static/media/Beedrill.ba8e3b6d.png": "/candy-crush-Game/static/media/Beedrill.ba8e3b6d.png",
     "static/media/Blastoise.d62e29d2.png": "/candy-crush-Game/static/media/Blastoise.d62e29d2.png",
     "static/media/Bulbasaur.d0b6e1a0.png": "/candy-crush-Game/static/media/Bulbasaur.d0b6e1a0.png",
     "static/media/Charizard.11f034d5.png": "/candy-crush-Game/static/media/Charizard.11f034d5.png",
     "static/media/Charmander.38de0337.png": "/candy-crush-Game/static/media/Charmander.38de0337.png",
     "static/media/index.css": "/candy-crush-Game/static/media/fon.406c89d4.jpeg",
-    "static/media/Squirtle.7c6b686f.png": "/candy-crush-Game/static/media/Squirtle.7c6b686f.png"
+    "static/media/Squirtle.7c6b686f.png": "/candy-crush-Game/static/media/Squirtle.7c6b686f.png",
+    "static/media/pikachuRun.ee1b7ad2.gif": "/candy-crush-Game/static/media/pikachuRun.ee1b7ad2.gif",
+    "static/media/pokemon.cf0944f9.mp3": "/candy-crush-Game/static/media/pokemon.cf0944f9.mp3",
+    "static/media/pokemonActive.7ba2e488.gif": "/candy-crush-Game/static/media/pokemonActive.7ba2e488.gif",
+    "static/media/pokemonStatic.bb8c22d0.png": "/candy-crush-Game/static/media/pokemonStatic.bb8c22d0.png"
   },
   "entrypoints": [
     "static/js/runtime-main.914ddc39.js",
-    "static/js/2.87c597e8.chunk.js",
-    "static/css/main.b2beef7c.chunk.css",
-    "static/js/main.08eb810a.chunk.js"
+    "static/js/2.dca62f3e.chunk.js",
+    "static/css/main.b777c438.chunk.css",
+    "static/js/main.bfca27f6.chunk.js"
   ]
 }
