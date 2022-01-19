@@ -9,8 +9,11 @@ import Empty from '../images/pokemons/Empty.png'
 import ScoreBoard from './ScoreBoard.js'
 import TimeBoard from './TimerBoard'
 import * as React from 'react'
-import Button from '@mui/material/Button' 
 import AudioElement from './AudioElement'
+import pikachuRunTimeBoardStatic from '../images/pikachuStop.png'
+import pikachuRunTimeBoardActive from '../images/pikachuRun.gif'
+import pokemonMusicPicActive from '../images/pokemonActive.gif';
+import pokemonMusicPicStatic from '../images/pokemonStatic.png';
 
 
 
@@ -25,11 +28,19 @@ const pokemons =  [
   Charizard
 ]
 const emptyPic = Empty;
- 
+
+
 const GameLogic = () => {
       const [currentPokemonArrangement, setCurrentPokemonArrangement] = useState([])
   const [scoreDisplay, setScoreDisplay] = useState(0);
   const [activeId, setActiveId] = useState(null);
+
+
+
+  const [pikachuTimerBoard, setPikachuTimerBoard] = useState(pikachuRunTimeBoardStatic);
+
+  const [inputDisplay, setInputDisplay] = useState(false);
+  const [pikachMusicPic, setPikachuMusicPic] = useState(pokemonMusicPicStatic)
 
 
 
@@ -341,6 +352,11 @@ const travelCard = (e, startCardId) => {
 
 
   const timerGame = () => {
+      
+
+      setPikachuTimerBoard(pikachuRunTimeBoardActive);
+      setPikachuMusicPic(pokemonMusicPicActive);
+
       document.querySelector('.pikachuPic').classList.add('pikachuAnimation');
       let sec = 60;
       let min = 1;
@@ -393,7 +409,10 @@ const travelCard = (e, startCardId) => {
       <div className='logoBlock'> 
         <div className='pokemonLogo'></div>
       </div>
-      <Button variant="outlined" onClick={timerGame}>Start Game</Button>
+    
+      <button variant="outlined" onClick={timerGame} className='ButtonBox'>
+          <div className="buttonText">Start Game</div>
+      </button>
       <div className="mainGameField">
         <div className="gameBox">
           <div className="gameBorder">  
@@ -414,8 +433,8 @@ const travelCard = (e, startCardId) => {
           </div>
         </div>
         <div className='leftsideInfoBar'>
-          <TimeBoard />
-          <AudioElement />
+          <TimeBoard statePikachu={pikachuTimerBoard} />
+          <AudioElement stateMusicPokemon={pikachMusicPic}  />
           <ScoreBoard score={scoreDisplay} />
         </div>
       </div>
