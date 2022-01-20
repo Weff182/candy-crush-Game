@@ -1,17 +1,19 @@
-import { useState, useEffect, useCallback } from 'react'
-import Beedrill from '../images/pokemons/Beedrill.png'
-import Blastoise from '../images/pokemons/Blastoise.png'
-import Bulbasaur from '../images/pokemons/Bulbasaur.png'
-import Charmander from '../images/pokemons/Charmander.png'
-import Squirtle from '../images/pokemons/Squirtle.png'
-import Charizard from '../images/pokemons/Charizard.png'
-import Empty from '../images/pokemons/Empty.png'
-import ScoreBoard from './ScoreBoard.js'
-import TimeBoard from './TimerBoard'
-import * as React from 'react'
-import AudioElement from './AudioElement'
-import pikachuRunTimeBoardStatic from '../images/pikachuStop.png'
-import pikachuRunTimeBoardActive from '../images/pikachuRun.gif'
+import { useState, useEffect, useCallback } from 'react';
+import Beedrill from '../images/pokemons/Beedrill.png';
+import Blastoise from '../images/pokemons/Blastoise.png';
+import Bulbasaur from '../images/pokemons/Bulbasaur.png';
+import Charmander from '../images/pokemons/Charmander.png';
+import Squirtle from '../images/pokemons/Squirtle.png';
+import Charizard from '../images/pokemons/Charizard.png';
+import Empty from '../images/pokemons/Empty.png';
+import ScoreBoard from './ScoreBoard.js';
+import TimeBoard from './TimerBoard';
+import * as React from 'react';
+import AudioElement from './AudioElement';
+
+import pikachuRunTimeBoardStatic from '../images/pikachuStop.png';
+import pikachuRunTimeBoardActive from '../images/pikachuRun.gif';
+
 import pokemonMusicPicActive from '../images/pokemonActive.gif';
 import pokemonMusicPicStatic from '../images/pokemonStatic.png';
 
@@ -31,7 +33,7 @@ const emptyPic = Empty;
 
 
 const GameLogic = () => {
-      const [currentPokemonArrangement, setCurrentPokemonArrangement] = useState([])
+  const [currentPokemonArrangement, setCurrentPokemonArrangement] = useState([])
   const [scoreDisplay, setScoreDisplay] = useState(0);
   const [activeId, setActiveId] = useState(null);
 
@@ -39,8 +41,8 @@ const GameLogic = () => {
 
   const [pikachuTimerBoard, setPikachuTimerBoard] = useState(pikachuRunTimeBoardStatic);
 
-  const [inputDisplay, setInputDisplay] = useState(false);
-  const [pikachMusicPic, setPikachuMusicPic] = useState(pokemonMusicPicStatic)
+
+  const [pikachMusicPic, setPikachuMusicPic] = useState(pokemonMusicPicStatic);
 
 
 
